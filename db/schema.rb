@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_04_182614) do
+ActiveRecord::Schema.define(version: 2019_10_24_003551) do
+
+  create_table "game_scores", force: :cascade do |t|
+    t.integer "military_score"
+    t.integer "money_score"
+    t.integer "wonder_score"
+    t.integer "blue_score"
+    t.integer "yellow_score"
+    t.integer "purple_score"
+    t.integer "green_score"
+    t.integer "total_score"
+    t.integer "user_id"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_scores_on_game_id"
+    t.index ["user_id"], name: "index_game_scores_on_user_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "winner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
